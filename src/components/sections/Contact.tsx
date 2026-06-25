@@ -7,12 +7,39 @@ import { profile } from '../../data/portfolio'
 
 export default function Contact() {
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e: FormEvent) => {
+  // Free Web3Forms endpoint. This access key is safe to expose publicly — it can
+  // only deliver messages to the owner's email address and nothing else.
+  const WEB3FORMS_KEY = '718f1114-c81e-4c11-8eb2-2ed186e47a64'
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // Wire this up to your email service (Formspree, Resend, etc.)
-    setSent(true)
-    setTimeout(() => setSent(false), 4000)
+    setError('')
+    setSending(true)
+    const form = e.currentTarget
+    const data = new FormData(form)
+    data.append('access_key', WEB3FORMS_KEY)
+    data.append('from_name', 'Portfolio Contact Form')
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+      })
+      const json = await res.json()
+      if (json.success) {
+        setSent(true)
+        form.reset()
+        setTimeout(() => setSent(false), 5000)
+      } else {
+        setError(json.message || 'Something went wrong — please email me directly.')
+      }
+    } catch {
+      setError('Network error — please email me directly.')
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -69,6 +96,7 @@ export default function Contact() {
           <div>
             <label className="mb-2 block text-sm text-[var(--muted)]">Message</label>
             <textarea
+              name="message"
               required
               rows={4}
               placeholder="Tell me about your idea..."
@@ -80,12 +108,17 @@ export default function Contact() {
               <>
                 <Check size={16} /> Message sent
               </>
+            ) : sending ? (
+              <>
+                <Send size={16} /> Sending…
+              </>
             ) : (
               <>
                 <Send size={16} /> Send message
               </>
             )}
           </MagneticButton>
+          {error && <p className="mt-3 text-sm text-red-400">{error}</p>}
         </motion.form>
       </div>
     </section>
