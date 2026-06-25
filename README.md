@@ -1,5 +1,7 @@
 # Muhammad Hamza — Portfolio
 
+> 🔴 **Live demo:** **https://portfolio-lime-rho-96.vercel.app/**
+
 Personal portfolio of **Muhammad Hamza**, a BS Computer Science student at
 Bahria University, Karachi, focused on **AI and web development**.
 
