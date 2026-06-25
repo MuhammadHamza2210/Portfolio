@@ -16,7 +16,7 @@ I love working at the intersection of AI and web development — building things
   resumeUrl: '#',
   socials: {
     github: 'https://github.com/muhammadhamza2210',
-    linkedin: '#', // TODO: add your LinkedIn profile URL
+    linkedin: 'https://www.linkedin.com/in/muhammad-hamza-962ba1363/',
   },
 }
 
