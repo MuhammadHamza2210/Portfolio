@@ -1,10 +1,8 @@
-import { lazy, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowDown, Github, Linkedin, Mail, Sparkles } from 'lucide-react'
 import MagneticButton from '../MagneticButton'
+import IdCard from '../IdCard'
 import { profile } from '../../data/portfolio'
-
-const HeroScene = lazy(() => import('../three/HeroScene'))
 
 const line = {
   hidden: { opacity: 0, y: '120%' },
@@ -20,16 +18,8 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative flex min-h-screen items-center overflow-hidden pt-24">
-      {/* 3D background */}
-      <div className="absolute inset-0 -z-[1]">
-        <Suspense fallback={null}>
-          <HeroScene />
-        </Suspense>
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--bg)]" />
-      </div>
-
-      <div className="mx-auto w-full max-w-7xl px-6">
-        <div className="max-w-3xl">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-[1.1fr_0.9fr]">
+        <div>
           {/* availability pill */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -105,6 +95,9 @@ export default function Hero() {
             ))}
           </motion.div>
         </div>
+
+        {/* ID card visual (replaces the old 3D scene) */}
+        <IdCard />
       </div>
 
       {/* scroll cue */}
