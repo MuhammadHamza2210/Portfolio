@@ -60,8 +60,8 @@ export default function IdCard() {
           animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
         >
-          {/* card body */}
-          <div className="rounded-[29px] glass-strong p-6">
+          {/* card body — deep indigo→teal tint matching the site accents */}
+          <div className="rounded-[29px] bg-gradient-to-br from-[#1d1748]/95 via-[#141232]/95 to-[#0b1f2e]/95 p-6 backdrop-blur-xl">
             {/* header */}
             <div className="mb-5 flex items-center justify-between">
               <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent-glow">Developer ID</span>
@@ -92,7 +92,7 @@ export default function IdCard() {
             </div>
 
             {/* details */}
-            <div className="mt-5 space-y-2.5 text-xs text-[var(--muted)]">
+            <div className="mt-5 space-y-2.5 text-xs text-slate-200">
               <Row icon={<GraduationCap size={13} />}>BS Computer Science · Bahria University</Row>
               <Row icon={<MapPin size={13} />}>{profile.location}</Row>
               <Row icon={<Sparkles size={13} />}>AI · RAG · Full-Stack Web</Row>
@@ -100,7 +100,7 @@ export default function IdCard() {
 
             {/* footer: id + verified */}
             <div className="mt-5 flex items-center justify-between border-t border-white/10 pt-3">
-              <span className="font-mono text-[10px] text-[var(--muted)]">ID · CS-2023-MH</span>
+              <span className="font-mono text-[10px] text-slate-300">ID · CS-2023-MH</span>
               <span className="inline-flex items-center gap-1 text-[10px] font-medium text-emerald-400">
                 <BadgeCheck size={12} /> Verified
               </span>
