@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #05060a;
+  --fg: #e8eaf2;
+  --muted: #9aa0b4;
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --accent: #7c5cff;
+  --accent-glow: #a78bfa;
+  --accent-cyan: #22d3ee;
+  --accent-pink: #f472b6;
+}
+
+:root.light {
+  --bg: #eef0f7;
+  --fg: #11131c;
+  --muted: #555b71;
+  --glass: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(20, 24, 40, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Hide the native cursor when the custom cursor is active (desktop only) */
+@media (hover: hover) and (pointer: fine) {
+  body.custom-cursor,
+  body.custom-cursor * {
+    cursor: none;
+  }
+}
+
+::selection {
+  background: rgba(124, 92, 255, 0.35);
+  color: #fff;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--accent), var(--accent-cyan));
+  border-radius: 999px;
+  border: 2px solid var(--bg);
+}
+
+/* ---------- Reusable layered utilities ---------- */
+@layer components {
+  .glass {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    box-shadow:
+      0 8px 40px -12px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+  }
+
+  .neu {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.25));
+    box-shadow:
+      6px 6px 16px rgba(0, 0, 0, 0.45),
+      -4px -4px 14px rgba(255, 255, 255, 0.03);
+  }
+
+  .gradient-text {
+    background: linear-gradient(120deg, #fff 0%, var(--accent-glow) 40%, var(--accent-cyan) 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .ring-accent {
+    box-shadow: 0 0 0 1px rgba(124, 92, 255, 0.4), 0 0 40px -8px rgba(124, 92, 255, 0.5);
+  }
+}
+
+/* ---------- Aurora background ---------- */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora::before,
+.aurora::after {
+  content: '';
+  position: absolute;
+  width: 60vmax;
+  height: 60vmax;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.55;
+  background: conic-gradient(from 120deg, var(--accent), var(--accent-cyan), var(--accent-pink), var(--accent));
+  animation: auroraMove 22s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+.aurora::before {
+  top: -20vmax;
+  left: -10vmax;
+}
+.aurora::after {
+  bottom: -25vmax;
+  right: -15vmax;
+  animation-delay: -11s;
+  background: conic-gradient(from 300deg, var(--accent-cyan), var(--accent-pink), var(--accent), var(--accent-cyan));
+}
+
+@keyframes auroraMove {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  33% { transform: translate(8vw, 6vh) scale(1.15) rotate(60deg); }
+  66% { transform: translate(-6vw, -4vh) scale(0.95) rotate(140deg); }
+}
+
+/* subtle grain / noise overlay */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* shimmer effect on skill bars / buttons */
+.shimmer {
+  background-image: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.18) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: shimmer 2.6s linear infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
