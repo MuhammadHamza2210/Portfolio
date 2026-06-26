@@ -7,6 +7,7 @@ type Props = {
   onClick?: () => void
   variant?: 'primary' | 'ghost'
   className?: string
+  cursorLabel?: string
 }
 
 /**
@@ -18,6 +19,7 @@ export default function MagneticButton({
   onClick,
   variant = 'primary',
   className = '',
+  cursorLabel,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null)
 
@@ -46,6 +48,7 @@ export default function MagneticButton({
       ref={ref}
       onMouseMove={handleMove}
       onMouseLeave={reset}
+      data-cursor-label={cursorLabel}
       className={`${base} ${styles} ${className}`}
       style={{ transition: 'transform 0.25s cubic-bezier(0.22,1,0.36,1)' }}
     >

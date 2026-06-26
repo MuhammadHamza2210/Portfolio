@@ -69,6 +69,7 @@ export default function Navbar({ theme, onToggleTheme, onOpenPalette }: Props) {
               target="_blank"
               rel="noreferrer"
               data-cursor="hover"
+              data-cursor-label="Résumé"
               className="hidden items-center gap-2 rounded-full glass px-3 py-2 text-xs text-[var(--muted)] transition-colors hover:text-[var(--fg)] sm:flex"
             >
               <FileText size={14} /> Resume

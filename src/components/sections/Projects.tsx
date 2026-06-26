@@ -26,6 +26,7 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: () => void
       <button
         onClick={onOpen}
         data-cursor="hover"
+        data-cursor-label="Case study"
         aria-label={`Open ${project.title} case study`}
         className="relative flex flex-col text-left"
       >
@@ -54,6 +55,7 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: () => void
         <button
           onClick={onOpen}
           data-cursor="hover"
+          data-cursor-label="Case study"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--fg)] transition-opacity hover:opacity-70"
         >
           Case study →
@@ -64,6 +66,7 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: () => void
           target="_blank"
           rel="noreferrer"
           data-cursor="hover"
+          data-cursor-label="Live ↗"
           className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.06] px-4 py-2 text-sm transition-colors hover:bg-white/[0.12]"
         >
           Live Demo <ArrowUpRight size={15} />
@@ -73,6 +76,7 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: () => void
           target="_blank"
           rel="noreferrer"
           data-cursor="hover"
+          data-cursor-label="Code"
           aria-label="GitHub repository"
           className="grid h-9 w-9 place-items-center rounded-full glass transition-colors hover:bg-white/[0.12]"
         >
@@ -200,6 +204,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               target="_blank"
               rel="noreferrer"
               data-cursor="hover"
+              data-cursor-label="Live ↗"
               className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-accent to-accent-cyan px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
             >
               Live Demo <ArrowUpRight size={15} />
@@ -209,6 +214,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               target="_blank"
               rel="noreferrer"
               data-cursor="hover"
+              data-cursor-label="Code"
               className="inline-flex items-center gap-2 rounded-full glass px-5 py-2.5 text-sm transition-colors hover:bg-white/[0.12]"
             >
               <Github size={16} /> Source

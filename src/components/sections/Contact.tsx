@@ -67,7 +67,7 @@ export default function Contact() {
               </p>
             </div>
             <div className="mt-8 space-y-4">
-              <a href={`mailto:${profile.email}`} className="flex items-center gap-3 text-sm transition-colors hover:text-accent-glow">
+              <a href={`mailto:${profile.email}`} data-cursor-label="Email" className="flex items-center gap-3 text-sm transition-colors hover:text-accent-glow">
                 <span className="grid h-10 w-10 place-items-center rounded-xl glass"><Mail size={16} /></span>
                 {profile.email}
               </a>
@@ -103,7 +103,7 @@ export default function Contact() {
               className="w-full resize-none rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm outline-none transition-colors placeholder:text-[var(--muted)]/60 focus:border-accent/60 focus:bg-white/[0.05]"
             />
           </div>
-          <MagneticButton onClick={() => {}}>
+          <MagneticButton onClick={() => {}} cursorLabel={sent ? 'Sent ✓' : 'Send'}>
             {sent ? (
               <>
                 <Check size={16} /> Message sent

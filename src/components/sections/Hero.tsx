@@ -62,10 +62,10 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 1.05 }}
             className="mt-9 flex flex-wrap items-center gap-4"
           >
-            <MagneticButton href="#projects">
+            <MagneticButton href="#projects" cursorLabel="View work">
               <Sparkles size={16} /> View My Work
             </MagneticButton>
-            <MagneticButton href="#contact" variant="ghost">
+            <MagneticButton href="#contact" variant="ghost" cursorLabel="Say hi">
               Let's Talk
             </MagneticButton>
           </motion.div>
@@ -78,17 +78,18 @@ export default function Hero() {
             className="mt-10 flex items-center gap-5 text-[var(--muted)]"
           >
             {[
-              { icon: Github, href: profile.socials.github },
-              { icon: Linkedin, href: profile.socials.linkedin },
-              { icon: Mail, href: `mailto:${profile.email}` },
-            ].map(({ icon: Icon, href }, i) => (
+              { icon: Github, href: profile.socials.github, label: 'GitHub' },
+              { icon: Linkedin, href: profile.socials.linkedin, label: 'LinkedIn' },
+              { icon: Mail, href: `mailto:${profile.email}`, label: 'Email' },
+            ].map(({ icon: Icon, href, label }, i) => (
               <a
                 key={i}
                 href={href}
                 target="_blank"
                 rel="noreferrer"
+                data-cursor-label={label}
                 className="transition-colors hover:text-[var(--fg)]"
-                aria-label="social link"
+                aria-label={label}
               >
                 <Icon size={20} />
               </a>
