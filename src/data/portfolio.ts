@@ -137,7 +137,7 @@ export const projects: Project[] = [
     tags: ['Python', 'Streamlit', 'ML'],
     demo: 'https://codescan-ai-lkuctppx3i2c4izvjpekkc.streamlit.app/',
     github: 'https://github.com/MuhammadHamza2210/CodeScan-AI',
-    span: 'wide',
+    span: 'normal',
     accent: '#a78bfa',
     image: '/projects/codescan.jpg',
     year: '2026',
