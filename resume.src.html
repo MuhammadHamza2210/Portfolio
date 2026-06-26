@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Muhammad Hamza — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #14161a;
+    --muted: #4a5160;
+    --line: #d9dde4;
+    --accent: #5b3df5;     /* indigo, matches portfolio */
+    --accent-soft: #efeaff;
+  }
+
+  * { box-sizing: border-box; }
+
+  @page {
+    size: A4;
+    margin: 11mm 14mm;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    color: var(--ink);
+    font-size: 10pt;
+    line-height: 1.36;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+
+  /* ---------- Header ---------- */
+  header { margin-bottom: 14px; }
+
+  .name {
+    font-size: 23pt;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.05;
+  }
+  .role {
+    font-size: 11.5pt;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 2px;
+  }
+  .contact {
+    margin-top: 8px;
+    font-size: 9.3pt;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 0;
+  }
+  .contact span { white-space: nowrap; }
+  .contact .sep { margin: 0 8px; color: var(--line); }
+
+  /* ---------- Sections ---------- */
+  section { margin-top: 11px; }
+
+  h2 {
+    font-size: 9.6pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: var(--ink);
+    margin: 0 0 6px;
+    padding-bottom: 3px;
+    border-bottom: 1.5px solid var(--line);
+  }
+
+  p { margin: 0; }
+  .summary { color: #23272f; }
+
+  /* ---------- Skills ---------- */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    row-gap: 5px;
+    column-gap: 10px;
+    font-size: 9.8pt;
+  }
+  .skills-grid dt { font-weight: 600; color: var(--muted); }
+  .skills-grid dd { margin: 0; color: var(--ink); }
+
+  /* ---------- Projects ---------- */
+  .project { margin-bottom: 8px; page-break-inside: avoid; }
+  .project:last-child { margin-bottom: 0; }
+  .project-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .project-title { font-weight: 700; font-size: 10.6pt; }
+  .project-title .stack { font-weight: 500; color: var(--muted); font-size: 9pt; }
+  .project-links { font-size: 8.7pt; white-space: nowrap; color: var(--muted); }
+  .project ul {
+    margin: 3px 0 0;
+    padding-left: 16px;
+    color: #2a2f38;
+  }
+  .project li { margin: 1px 0; }
+
+  /* ---------- Education ---------- */
+  .edu-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .edu-title { font-weight: 700; }
+  .edu-meta { color: var(--muted); font-size: 9.3pt; }
+  .gpa-badge {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 9pt;
+    padding: 1px 8px;
+    border-radius: 20px;
+  }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 26px; }
+  .placeholder { color: #b45309; font-weight: 600; }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="name">Muhammad Hamza</div>
+    <div class="role">AI &amp; Web Developer</div>
+    <div class="contact">
+      <span>Karachi, Pakistan</span><span class="sep">•</span>
+      <span>ihamza.muhammad2003@gmail.com</span><span class="sep">•</span>
+      <span>github.com/MuhammadHamza2210</span><span class="sep">•</span>
+      <span>linkedin.com/in/muhammad-hamza-962ba1363</span><span class="sep">•</span>
+      <span>portfolio-lime-rho-96.vercel.app</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Summary</h2>
+    <p class="summary">
+      Computer Science student (CGPA 3.81/4.0) and self-taught developer who builds AI-powered,
+      full-stack products end to end. Comfortable across the stack — React/TypeScript front ends,
+      Python/Node back ends, and applied AI work like retrieval-augmented generation (RAG) and
+      LLM-integrated features. I turn ideas into shipped, deployed apps and keep learning by building.
+    </p>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <dl class="skills-grid">
+      <dt>Languages</dt><dd>Python, TypeScript, JavaScript, SQL</dd>
+      <dt>AI / ML</dt><dd>RAG &amp; LLM app development, Prompt Engineering, LLM APIs (Gemini, Claude, Ollama), CodeBERT, embeddings / vector search</dd>
+      <dt>Frontend</dt><dd>React, Vite, Tailwind CSS, Three.js / React Three Fiber, Framer Motion</dd>
+      <dt>Backend</dt><dd>Node.js, Express, FastAPI, Flask, REST APIs, WebSockets, JWT auth</dd>
+      <dt>Data &amp; Tools</dt><dd>SQLite / SQL, Git &amp; GitHub, Streamlit, Vercel</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+
+    <div class="project">
+      <div class="project-head">
+        <div class="project-title">Synapse — AI Study OS <span class="stack">· React, FastAPI, RAG, Three.js</span></div>
+        <div class="project-links">Live: synapse-eight-ruby.vercel.app · github.com/MuhammadHamza2210/Synapse</div>
+      </div>
+      <ul>
+        <li>Built a retrieval-augmented "Study OS" that ingests a user's own documents into a vector store and answers questions grounded in their material — with citations, not the open web.</li>
+        <li>Visualized recalled concepts as an explorable 3D Mind Palace using Three.js for a memorable study experience.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <div class="project-title">Orion — Real-Time Stock Dashboard <span class="stack">· React, FastAPI, WebSockets, AI</span></div>
+        <div class="project-links">Live: orion-nine-wine.vercel.app · github.com/MuhammadHamza2210/Orion</div>
+      </div>
+      <ul>
+        <li>Streamed live prices for 50 tickers over WebSockets with interactive charts and no polling.</li>
+        <li>Added on-demand LLM analysis that explains any stock's recent movement in plain language.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <div class="project-title">CodeScan AI — Code Plagiarism Detector <span class="stack">· Python, ML, Streamlit</span></div>
+        <div class="project-links">github.com/MuhammadHamza2210/CodeScan-AI</div>
+      </div>
+      <ul>
+        <li>Combined four engines — AST structural diffing, a trained ML model, winnowing fingerprints and CodeBERT embeddings — for structure-aware similarity scoring that resists variable renaming and reformatting.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <div class="project-title">LootLo — Full-Stack E-Commerce <span class="stack">· Flask, SQLite, REST API</span></div>
+        <div class="project-links">github.com/MuhammadHamza2210/Lootlo</div>
+      </div>
+      <ul>
+        <li>Built a complete commerce flow end to end: user auth, cart, wishlist, coupon codes, live order tracking and an admin console for products and orders.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <div class="project-title">WildMind AI — AI Wildlife Encyclopedia <span class="stack">· React, Vite, Gemini API</span></div>
+        <div class="project-links">github.com/MuhammadHamza2210/WildMind-AI</div>
+      </div>
+      <ul>
+        <li>Conversational encyclopedia returning rich, structured answers for any animal via the Gemini API, with a fast React + Vite interface.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="edu-head">
+      <div class="edu-title">BS Computer Science — Bahria University, Karachi</div>
+      <div class="edu-meta">2023 – 2027 (expected)</div>
+    </div>
+    <div style="margin-top:4px; display:flex; align-items:center; gap:10px;">
+      <span class="gpa-badge">CGPA 3.81 / 4.0 — through 5th semester</span>
+    </div>
+    <p style="margin-top:5px; color:var(--muted); font-size:9.5pt;">
+      Relevant coursework: Data Structures &amp; Algorithms, Databases, Object-Oriented Programming, Software Engineering, Operating Systems.
+    </p>
+  </section>
+
+</body>
+</html>

@@ -1,41 +1,30 @@
 import { useMemo, useState } from 'react'
-import { motion, AnimatePresence, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import SectionHeading from '../SectionHeading'
-import { skills, type Skill } from '../../data/portfolio'
+import { skills, skillLevels, type Skill, type SkillLevel } from '../../data/portfolio'
 
 const categories = ['All', 'Frontend', 'AI', 'Backend', 'Tools'] as const
 
-function Ring({ level }: { level: number }) {
-  const ref = useRef<SVGSVGElement>(null)
-  const inView = useInView(ref, { once: true })
-  const r = 34
-  const c = 2 * Math.PI * r
-  const offset = c - (level / 100) * c
+// How many dots light up per tier (out of 3).
+const tierDots: Record<SkillLevel, number> = {
+  Advanced: 3,
+  Proficient: 2,
+  Familiar: 1,
+}
 
+function LevelDots({ level }: { level: SkillLevel }) {
+  const filled = tierDots[level]
   return (
-    <svg ref={ref} viewBox="0 0 80 80" className="h-20 w-20 -rotate-90">
-      <circle cx="40" cy="40" r={r} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="6" />
-      <motion.circle
-        cx="40"
-        cy="40"
-        r={r}
-        fill="none"
-        stroke="url(#ringGrad)"
-        strokeWidth="6"
-        strokeLinecap="round"
-        strokeDasharray={c}
-        initial={{ strokeDashoffset: c }}
-        animate={inView ? { strokeDashoffset: offset } : {}}
-        transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-      />
-      <defs>
-        <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#7c5cff" />
-          <stop offset="100%" stopColor="#22d3ee" />
-        </linearGradient>
-      </defs>
-    </svg>
+    <div className="flex items-center gap-1" aria-hidden>
+      {[0, 1, 2].map((i) => (
+        <span
+          key={i}
+          className={`h-1.5 w-1.5 rounded-full transition-colors ${
+            i < filled ? 'bg-gradient-to-r from-accent to-accent-cyan' : 'bg-white/15'
+          }`}
+        />
+      ))}
+    </div>
   )
 }
 
@@ -48,15 +37,15 @@ function SkillCard({ skill }: { skill: Skill }) {
       exit={{ opacity: 0, scale: 0.92 }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       data-cursor="hover"
-      className="group relative flex items-center gap-4 rounded-2xl glass p-5 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.07]"
+      className="group relative flex items-center justify-between gap-4 rounded-2xl glass p-5 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.07]"
     >
-      <div className="relative grid place-items-center">
-        <Ring level={skill.level} />
-        <span className="absolute font-mono text-sm font-medium">{skill.level}%</span>
-      </div>
-      <div>
-        <h4 className="font-medium">{skill.name}</h4>
+      <div className="min-w-0">
+        <h4 className="truncate font-medium">{skill.name}</h4>
         <span className="text-xs uppercase tracking-wider text-[var(--muted)]">{skill.category}</span>
+      </div>
+      <div className="flex shrink-0 flex-col items-end gap-1.5">
+        <span className="font-mono text-xs text-[var(--muted)]">{skill.level}</span>
+        <LevelDots level={skill.level} />
       </div>
     </motion.div>
   )
@@ -74,7 +63,7 @@ export default function Skills() {
       <SectionHeading eyebrow="Skills" title="Tools I work with" subtitle="The stack I use to build AI and full-stack apps." />
 
       {/* filters */}
-      <div className="mb-10 flex flex-wrap justify-center gap-3">
+      <div className="mb-6 flex flex-wrap justify-center gap-3">
         {categories.map((cat) => (
           <button
             key={cat}
@@ -93,6 +82,16 @@ export default function Skills() {
             )}
             {cat}
           </button>
+        ))}
+      </div>
+
+      {/* legend */}
+      <div className="mb-10 flex flex-wrap items-center justify-center gap-5 text-xs text-[var(--muted)]">
+        {skillLevels.map((lvl) => (
+          <span key={lvl} className="flex items-center gap-2">
+            <LevelDots level={lvl} />
+            {lvl}
+          </span>
         ))}
       </div>
 

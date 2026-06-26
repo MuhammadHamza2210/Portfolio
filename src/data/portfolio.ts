@@ -13,7 +13,7 @@ I love working at the intersection of AI and web development — building things
   location: 'Karachi, Pakistan',
   email: 'ihamza.muhammad2003@gmail.com',
   available: true,
-  resumeUrl: '#',
+  resumeUrl: '/resume.pdf',
   socials: {
     github: 'https://github.com/muhammadhamza2210',
     linkedin: 'https://www.linkedin.com/in/muhammad-hamza-962ba1363/',
@@ -27,27 +27,35 @@ export const stats = [
   { label: 'Languages', value: 5, suffix: '+' },
 ]
 
+// Honest proficiency tiers instead of arbitrary percentages.
+//   Advanced   — I build with this regularly and reach for it first.
+//   Proficient — comfortable and productive in real projects.
+//   Familiar   — working knowledge, still deepening.
+export type SkillLevel = 'Advanced' | 'Proficient' | 'Familiar'
+
 export type Skill = {
   name: string
-  level: number // 0-100
+  level: SkillLevel
   category: 'Frontend' | 'AI' | 'Backend' | 'Tools'
 }
 
+export const skillLevels: SkillLevel[] = ['Advanced', 'Proficient', 'Familiar']
+
 export const skills: Skill[] = [
-  { name: 'React / Vite', level: 88, category: 'Frontend' },
-  { name: 'TypeScript', level: 82, category: 'Frontend' },
-  { name: 'Tailwind CSS', level: 90, category: 'Frontend' },
-  { name: 'Three.js / R3F', level: 70, category: 'Frontend' },
-  { name: 'Python', level: 88, category: 'AI' },
-  { name: 'RAG / LLM Apps', level: 80, category: 'AI' },
-  { name: 'Prompt Engineering', level: 82, category: 'AI' },
-  { name: 'LLM APIs (Gemini / Claude / Ollama)', level: 80, category: 'AI' },
-  { name: 'Node.js / Express', level: 80, category: 'Backend' },
-  { name: 'FastAPI', level: 76, category: 'Backend' },
-  { name: 'Flask', level: 78, category: 'Backend' },
-  { name: 'SQLite / SQL', level: 78, category: 'Backend' },
-  { name: 'Git / GitHub', level: 84, category: 'Tools' },
-  { name: 'Streamlit', level: 85, category: 'Tools' },
+  { name: 'React / Vite', level: 'Advanced', category: 'Frontend' },
+  { name: 'Tailwind CSS', level: 'Advanced', category: 'Frontend' },
+  { name: 'TypeScript', level: 'Proficient', category: 'Frontend' },
+  { name: 'Three.js / R3F', level: 'Familiar', category: 'Frontend' },
+  { name: 'Python', level: 'Advanced', category: 'AI' },
+  { name: 'RAG / LLM Apps', level: 'Proficient', category: 'AI' },
+  { name: 'Prompt Engineering', level: 'Proficient', category: 'AI' },
+  { name: 'LLM APIs (Gemini / Claude / Ollama)', level: 'Proficient', category: 'AI' },
+  { name: 'Node.js / Express', level: 'Proficient', category: 'Backend' },
+  { name: 'Flask', level: 'Proficient', category: 'Backend' },
+  { name: 'SQLite / SQL', level: 'Proficient', category: 'Backend' },
+  { name: 'FastAPI', level: 'Familiar', category: 'Backend' },
+  { name: 'Streamlit', level: 'Advanced', category: 'Tools' },
+  { name: 'Git / GitHub', level: 'Proficient', category: 'Tools' },
 ]
 
 export type Project = {
@@ -58,6 +66,13 @@ export type Project = {
   github: string
   span: 'wide' | 'tall' | 'normal' | 'big'
   accent: string
+  // --- case study fields (shown in the detail modal) ---
+  year: string
+  role: string
+  problem: string
+  solution: string
+  highlights: string[] // short metric / impact badges
+  image?: string // optional screenshot in /public (e.g. '/projects/synapse.png')
 }
 
 export const projects: Project[] = [
@@ -70,6 +85,13 @@ export const projects: Project[] = [
     github: 'https://github.com/MuhammadHamza2210/Synapse',
     span: 'big',
     accent: '#7c5cff',
+    year: '2025',
+    role: 'Solo — full-stack & AI',
+    problem:
+      'Students drown in scattered PDFs and notes, and lose hours hunting for what they already studied.',
+    solution:
+      'Built an AI "Study OS" that ingests your own documents, embeds them into a vector store, and answers questions with retrieval-augmented generation — grounded in your material, not the open internet. Recalled concepts are visualized as an explorable 3D Mind Palace so memory has a place to live.',
+    highlights: ['RAG over your own docs', 'Grounded, cited answers', '3D Mind Palace UI'],
   },
   {
     title: 'Orion — Stock Universe',
@@ -80,6 +102,13 @@ export const projects: Project[] = [
     github: 'https://github.com/MuhammadHamza2210/Orion',
     span: 'tall',
     accent: '#22d3ee',
+    year: '2025',
+    role: 'Solo — full-stack & AI',
+    problem:
+      'Retail traders juggle many tabs and still lack a single live view with instant context on what a move means.',
+    solution:
+      'A real-time dashboard streaming 50 tickers over WebSockets with interactive charts, and an on-demand LLM that explains any stock’s recent action in plain language. The backend fans live market data out to the client without polling.',
+    highlights: ['50 live tickers', 'WebSocket streaming', 'On-demand AI analysis'],
   },
   {
     title: 'WildMind AI',
@@ -90,6 +119,13 @@ export const projects: Project[] = [
     github: 'https://github.com/MuhammadHamza2210/WildMind-AI',
     span: 'normal',
     accent: '#34d399',
+    year: '2024',
+    role: 'Solo — frontend & AI',
+    problem:
+      'Static encyclopedias are rigid — you can only read what was pre-written, never ask your own follow-up.',
+    solution:
+      'A conversational wildlife encyclopedia: ask about any animal and the Gemini-backed model returns rich, structured answers on diet, habitat and behavior, with a fast React + Vite interface.',
+    highlights: ['Gemini-powered', 'Any animal, any question', 'Instant rich answers'],
   },
   {
     title: 'CodeScan AI',
@@ -100,6 +136,13 @@ export const projects: Project[] = [
     github: 'https://github.com/MuhammadHamza2210/CodeScan-AI',
     span: 'wide',
     accent: '#a78bfa',
+    year: '2025',
+    role: 'Solo — ML & Python',
+    problem:
+      'Naive plagiarism checkers compare text, so renaming variables or reformatting easily fools them.',
+    solution:
+      'Combines four engines — AST structural diffing, a trained ML model, winnowing fingerprints and CodeBERT embeddings — to score how similar two programs really are, catching structural copies that text matching misses.',
+    highlights: ['4 detection engines', 'AST + CodeBERT', 'Structure-aware scoring'],
   },
   {
     title: 'LootLo',
@@ -110,6 +153,13 @@ export const projects: Project[] = [
     github: 'https://github.com/MuhammadHamza2210/Lootlo',
     span: 'normal',
     accent: '#f472b6',
+    year: '2024',
+    role: 'Solo — full-stack',
+    problem:
+      'I wanted to prove I could build a complete commerce flow end to end, not just a pretty storefront.',
+    solution:
+      'A full e-commerce app with user auth, cart, wishlist, coupon codes, live order tracking and an admin console for managing products and orders — all backed by a Flask REST API and SQLite.',
+    highlights: ['Auth + admin console', 'Cart, wishlist, coupons', 'Live order tracking'],
   },
   {
     title: 'Hamza Restaurant',
@@ -120,6 +170,13 @@ export const projects: Project[] = [
     github: 'https://github.com/MuhammadHamza2210/Hamza-Restaurant',
     span: 'normal',
     accent: '#f59e0b',
+    year: '2024',
+    role: 'Solo — backend & full-stack',
+    problem:
+      'Small restaurants need a simple digital ordering flow without the cost of heavy POS software.',
+    solution:
+      'A restaurant ordering system with a Node/Express API, JWT-based auth for staff and customers, and a SQLite database driving menus and orders end to end.',
+    highlights: ['JWT auth', 'Menu + order management', 'Node / Express API'],
   },
   {
     title: 'WeatherScope',
@@ -130,6 +187,13 @@ export const projects: Project[] = [
     github: 'https://github.com/MuhammadHamza2210/WeatherScope',
     span: 'normal',
     accent: '#38bdf8',
+    year: '2024',
+    role: 'Solo — Python',
+    problem:
+      'Most weather widgets bury the few numbers you actually care about under clutter and ads.',
+    solution:
+      'A clean weather app that pulls live conditions and forecasts from a weather API and visualizes them in a simple, responsive Streamlit interface focused on readability.',
+    highlights: ['Live conditions + forecast', 'Clean data viz', 'Responsive UI'],
   },
 ]
 

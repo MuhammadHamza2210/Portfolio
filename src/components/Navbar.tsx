@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
-import { Command, Moon, Sun, Menu, X } from 'lucide-react'
+import { Command, Moon, Sun, Menu, X, FileText } from 'lucide-react'
 import { profile } from '../data/portfolio'
 
 const links = [
@@ -64,6 +64,15 @@ export default function Navbar({ theme, onToggleTheme, onOpenPalette }: Props) {
           </ul>
 
           <div className="flex items-center gap-2">
+            <a
+              href={profile.resumeUrl}
+              target="_blank"
+              rel="noreferrer"
+              data-cursor="hover"
+              className="hidden items-center gap-2 rounded-full glass px-3 py-2 text-xs text-[var(--muted)] transition-colors hover:text-[var(--fg)] sm:flex"
+            >
+              <FileText size={14} /> Resume
+            </a>
             <button
               onClick={onOpenPalette}
               data-cursor="hover"
@@ -116,6 +125,17 @@ export default function Navbar({ theme, onToggleTheme, onOpenPalette }: Props) {
                 </a>
               </li>
             ))}
+            <li>
+              <a
+                href={profile.resumeUrl}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2 rounded-xl px-4 py-3 text-sm text-[var(--muted)] transition-colors hover:bg-white/5 hover:text-[var(--fg)]"
+              >
+                <FileText size={15} /> Resume
+              </a>
+            </li>
           </ul>
         </motion.div>
       )}
