@@ -4,6 +4,7 @@ import { MapPin, Coffee, Code2, Heart } from 'lucide-react'
 import SectionHeading from '../SectionHeading'
 import TiltCard from '../TiltCard'
 import Reveal from '../Reveal'
+import ScrollRevealText from '../ScrollRevealText'
 import { profile, stats } from '../../data/portfolio'
 
 function Counter({ value, suffix }: { value: number; suffix: string }) {
@@ -48,7 +49,7 @@ export default function About() {
         <Reveal className="md:col-span-2">
           <TiltCard className="h-full p-8" intensity={5}>
             <Code2 className="mb-5 text-accent-glow" size={28} />
-            <p className="whitespace-pre-line text-lg leading-relaxed text-[var(--fg)]/90">{profile.bio}</p>
+            <ScrollRevealText text={profile.bio} className="text-lg font-medium leading-relaxed" />
             <div className="mt-6 flex flex-wrap gap-3 text-sm text-[var(--muted)]">
               <span className="inline-flex items-center gap-2 rounded-full glass px-3 py-1.5">
                 <MapPin size={14} /> {profile.location}
