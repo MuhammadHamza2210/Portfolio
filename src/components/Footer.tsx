@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
           <div className="text-center md:text-left">
             <a href="#home" className="font-display text-2xl font-bold tracking-tight gradient-text">
-              {profile.firstName}.
+              {profile.name}.
             </a>
             <p className="mt-2 max-w-sm text-sm text-[var(--muted)]">{profile.tagline}</p>
           </div>

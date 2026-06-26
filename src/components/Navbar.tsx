@@ -45,7 +45,7 @@ export default function Navbar({ theme, onToggleTheme, onOpenPalette }: Props) {
           }`}
         >
           <a href="#home" className="font-display text-xl font-bold tracking-tight">
-            <span className="gradient-text">{profile.firstName}</span>
+            <span className="gradient-text">{profile.name}</span>
             <span className="text-accent-cyan">.</span>
           </a>
 

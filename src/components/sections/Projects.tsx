@@ -27,8 +27,18 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: () => void
         onClick={onOpen}
         data-cursor="hover"
         aria-label={`Open ${project.title} case study`}
-        className="relative text-left"
+        className="relative flex flex-col text-left"
       >
+        {project.image && (
+          <div className="mb-5 h-40 w-full overflow-hidden rounded-xl ring-1 ring-white/10">
+            <img
+              src={project.image}
+              alt={`${project.title} screenshot`}
+              loading="lazy"
+              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+            />
+          </div>
+        )}
         <div className="mb-4 flex flex-wrap items-center gap-2">
           {project.tags.map((t) => (
             <span key={t} className="rounded-full glass px-3 py-1 text-xs text-[var(--muted)]">
