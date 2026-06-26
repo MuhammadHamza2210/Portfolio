@@ -85,7 +85,8 @@ export const projects: Project[] = [
     github: 'https://github.com/MuhammadHamza2210/Synapse',
     span: 'big',
     accent: '#7c5cff',
-    year: '2025',
+    image: '/projects/synapse.jpg',
+    year: '2026',
     role: 'Solo — full-stack & AI',
     problem:
       'Students drown in scattered PDFs and notes, and lose hours hunting for what they already studied.',
@@ -102,7 +103,7 @@ export const projects: Project[] = [
     github: 'https://github.com/MuhammadHamza2210/Orion',
     span: 'tall',
     accent: '#22d3ee',
-    year: '2025',
+    year: '2026',
     role: 'Solo — full-stack & AI',
     problem:
       'Retail traders juggle many tabs and still lack a single live view with instant context on what a move means.',
@@ -119,7 +120,8 @@ export const projects: Project[] = [
     github: 'https://github.com/MuhammadHamza2210/WildMind-AI',
     span: 'normal',
     accent: '#34d399',
-    year: '2024',
+    image: '/projects/wildmind.jpg',
+    year: '2026',
     role: 'Solo — frontend & AI',
     problem:
       'Static encyclopedias are rigid — you can only read what was pre-written, never ask your own follow-up.',
@@ -136,7 +138,8 @@ export const projects: Project[] = [
     github: 'https://github.com/MuhammadHamza2210/CodeScan-AI',
     span: 'wide',
     accent: '#a78bfa',
-    year: '2025',
+    image: '/projects/codescan.jpg',
+    year: '2026',
     role: 'Solo — ML & Python',
     problem:
       'Naive plagiarism checkers compare text, so renaming variables or reformatting easily fools them.',
@@ -153,7 +156,8 @@ export const projects: Project[] = [
     github: 'https://github.com/MuhammadHamza2210/Lootlo',
     span: 'normal',
     accent: '#f472b6',
-    year: '2024',
+    image: '/projects/lootlo.jpg',
+    year: '2026',
     role: 'Solo — full-stack',
     problem:
       'I wanted to prove I could build a complete commerce flow end to end, not just a pretty storefront.',
@@ -170,7 +174,8 @@ export const projects: Project[] = [
     github: 'https://github.com/MuhammadHamza2210/Hamza-Restaurant',
     span: 'normal',
     accent: '#f59e0b',
-    year: '2024',
+    image: '/projects/restaurant.jpg',
+    year: '2026',
     role: 'Solo — backend & full-stack',
     problem:
       'Small restaurants need a simple digital ordering flow without the cost of heavy POS software.',
@@ -187,7 +192,8 @@ export const projects: Project[] = [
     github: 'https://github.com/MuhammadHamza2210/WeatherScope',
     span: 'normal',
     accent: '#38bdf8',
-    year: '2024',
+    image: '/projects/weatherscope.jpg',
+    year: '2026',
     role: 'Solo — Python',
     problem:
       'Most weather widgets bury the few numbers you actually care about under clutter and ads.',
