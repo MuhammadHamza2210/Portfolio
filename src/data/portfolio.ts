@@ -21,7 +21,7 @@ I love working at the intersection of AI and web development — building things
 }
 
 export const stats = [
-  { label: 'Projects Built', value: 7, suffix: '+' },
+  { label: 'Projects Built', value: 8, suffix: '+' },
   { label: 'Technologies', value: 14, suffix: '+' },
   { label: 'AI Projects', value: 3, suffix: '' },
   { label: 'Languages', value: 5, suffix: '+' },
@@ -76,6 +76,24 @@ export type Project = {
 }
 
 export const projects: Project[] = [
+  {
+    title: 'Fluxx — Finance Dashboard',
+    description:
+      'A private, offline-first personal finance dashboard. Track income, expenses, budgets and savings goals with live charts and a financial-health score — no accounts, no servers, your data never leaves the device.',
+    tags: ['React', 'TypeScript', 'IndexedDB', 'Recharts'],
+    demo: 'https://fluxx-nu.vercel.app/',
+    github: 'https://github.com/MuhammadHamza2210/Fluxx',
+    span: 'normal',
+    accent: '#7c5cff',
+    image: '/projects/fluxx.jpg',
+    year: '2026',
+    role: 'Solo — full-stack (100% client-side)',
+    problem:
+      'Most budgeting apps make you create an account and upload your financial data to their servers — a privacy trade-off just to track your own money.',
+    solution:
+      'Built a finance dashboard that runs entirely in the browser. Transactions, budgets and savings goals live in IndexedDB and are visualized with live charts (spending donut, cash-flow, 6-month trend) plus an explainable financial-health score. No backend, no API keys — it works offline, and the data never leaves your device. CSV import/export and JSON backup keep you fully in control.',
+    highlights: ['100% offline & private', 'Live charts + health score', 'CSV / JSON backup'],
+  },
   {
     title: 'Synapse',
     description:
