@@ -103,6 +103,7 @@ export const projects: Project[] = [
     github: 'https://github.com/MuhammadHamza2210/Orion',
     span: 'tall',
     accent: '#22d3ee',
+    image: '/projects/orion.jpg',
     year: '2026',
     role: 'Solo — full-stack & AI',
     problem:
