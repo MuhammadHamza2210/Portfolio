@@ -21,7 +21,7 @@ I love working at the intersection of AI and web development — building things
 }
 
 export const stats = [
-  { label: 'Projects Built', value: 8, suffix: '+' },
+  { label: 'Projects Built', value: 9, suffix: '+' },
   { label: 'Technologies', value: 14, suffix: '+' },
   { label: 'AI Projects', value: 3, suffix: '' },
   { label: 'Languages', value: 5, suffix: '+' },
@@ -76,6 +76,24 @@ export type Project = {
 }
 
 export const projects: Project[] = [
+  {
+    title: 'Folio — PDF Toolkit',
+    description:
+      'A clean, full-stack online PDF toolkit with 19 tools — merge, split, organize, compress, convert (Word/Excel/PowerPoint ⇄ PDF), watermark, number and secure PDFs. Files are processed server-side and deleted immediately after download.',
+    tags: ['React', 'TypeScript', 'Node.js', 'Express'],
+    demo: 'https://muhammadhamza221003-folio.hf.space',
+    github: 'https://github.com/MuhammadHamza2210/Folio',
+    span: 'normal',
+    accent: '#ef4444',
+    image: '/projects/folio.png',
+    year: '2026',
+    role: 'Solo — full-stack',
+    problem:
+      'Free online PDF tools scatter each function across a different site, plaster you with ads, and often keep your uploaded files on their servers.',
+    solution:
+      'Built a single, ad-free PDF toolkit bundling 19 tools — merge, split, organize, compress, convert to and from Word/Excel/PowerPoint, watermark, add page numbers and password-protect. A React + TypeScript frontend talks to a Node/Express API that drives Ghostscript, LibreOffice and Python for the heavy conversions, all in one Docker container. Files are processed on the server and deleted right after download, so nothing lingers.',
+    highlights: ['19 PDF tools in one app', 'Office ⇄ PDF conversion', 'Files deleted after download'],
+  },
   {
     title: 'Fluxx — Finance Dashboard',
     description:
