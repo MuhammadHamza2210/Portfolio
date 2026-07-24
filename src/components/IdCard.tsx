@@ -100,7 +100,7 @@ export default function IdCard() {
 
             {/* footer: id + verified */}
             <div className="mt-5 flex items-center justify-between border-t border-white/10 pt-3">
-              <span className="font-mono text-[10px] text-slate-300">ID · CS-2023-MH</span>
+              <span className="font-mono text-[10px] text-slate-300">ID · CS-2024-MH</span>
               <span className="inline-flex items-center gap-1 text-[10px] font-medium text-emerald-400">
                 <BadgeCheck size={12} /> Verified
               </span>

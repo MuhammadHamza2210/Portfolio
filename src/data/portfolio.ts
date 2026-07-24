@@ -252,7 +252,7 @@ export const experience: Experience[] = [
   {
     role: 'BS Computer Science',
     company: 'Bahria University, Karachi',
-    period: '2023 — 2027 (expected)',
+    period: '2024 — 2027 (expected)',
     description:
       'Studying core computer science — data structures, algorithms, databases and software engineering — while building AI and full-stack projects on the side.',
   },
