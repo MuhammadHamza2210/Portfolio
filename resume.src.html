@@ -17,14 +17,14 @@
 
   * { box-sizing: border-box; }
 
-  @page { size: A4; margin: 16mm 17mm; }
+  @page { size: A4; margin: 15mm 17mm; }
   html, body { margin: 0; padding: 0; }
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     color: var(--soft);
-    font-size: 10.2pt;
-    line-height: 1.5;
+    font-size: 10pt;
+    line-height: 1.42;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -37,7 +37,7 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 24px;
-    padding-bottom: 16px;
+    padding-bottom: 12px;
     border-bottom: 1px solid var(--line);
   }
 
@@ -80,7 +80,7 @@
   }
 
   /* ============ Sections ============ */
-  section { margin-top: 19px; }
+  section { margin-top: 13px; }
 
   .label {
     font-size: 8.4pt;
@@ -88,7 +88,7 @@
     text-transform: uppercase;
     letter-spacing: 2.8px;
     color: var(--accent);
-    margin-bottom: 9px;
+    margin-bottom: 7px;
   }
 
   .summary { color: var(--soft); max-width: 95%; }
@@ -106,7 +106,7 @@
   .skills .val { color: var(--ink); }
 
   /* ============ Projects ============ */
-  .project { margin-bottom: 13px; page-break-inside: avoid; }
+  .project { margin-bottom: 9px; page-break-inside: avoid; }
   .project:last-child { margin-bottom: 0; }
   .p-head {
     display: flex;
@@ -145,6 +145,7 @@
     </div>
     <div class="contact">
       <div><span class="lbl">Email</span>ihamza.muhammad2003@gmail.com</div>
+      <div><span class="lbl">Phone</span>+92 327 2328463</div>
       <div><span class="lbl">GitHub</span>github.com/MuhammadHamza2210</div>
       <div><span class="lbl">LinkedIn</span>linkedin.com/in/muhammad-hamza</div>
       <div><span class="lbl">Portfolio</span>portfolio-lime-rho-96.vercel.app</div>
@@ -154,10 +155,11 @@
   <section>
     <div class="label">Summary</div>
     <p class="summary">
-      Computer Science student and developer who ships AI-powered, full-stack products end to end —
-      from React/TypeScript interfaces to Python and Node back ends, with applied work in
-      retrieval-augmented generation (RAG) and LLM-integrated features. I learn by building and deploying
-      real apps.
+      Computer Science student and developer who has shipped 10 AI-powered, full-stack products end to
+      end — from React/TypeScript interfaces to Python, Node and FastAPI back ends. My work spans
+      retrieval-augmented generation (RAG), LLM-integrated features, real-time streaming apps and complete
+      commerce and finance dashboards, most of them live and deployed. I learn by building — taking an idea
+      from a blank repo to a working app in front of real users.
     </p>
   </section>
 
@@ -166,27 +168,38 @@
 
     <div class="project">
       <div class="p-head">
+        <div class="p-title">Folio — PDF Toolkit</div>
+        <div class="p-stack">React · TypeScript · Node · Express</div>
+      </div>
+      <div class="p-desc">
+        A full-stack, ad-free PDF toolkit with 19 tools — merge, split, compress, watermark and
+        Office ⇄ PDF conversion — served from one Docker container, with files deleted after download.
+      </div>
+      <div class="p-links">muhammadhamza221003-folio.hf.space <span class="dot">·</span> github.com/MuhammadHamza2210/Folio</div>
+    </div>
+
+    <div class="project">
+      <div class="p-head">
         <div class="p-title">Synapse — AI Study OS</div>
         <div class="p-stack">React · FastAPI · RAG · Three.js</div>
       </div>
       <div class="p-desc">
         A retrieval-augmented “Study OS” that ingests a user’s own documents into a vector store and
-        answers questions grounded in their material, with recalled concepts rendered as an explorable
-        3D Mind Palace.
+        answers questions grounded in their material, with recalled concepts shown as a 3D Mind Palace.
       </div>
       <div class="p-links">synapse-eight-ruby.vercel.app <span class="dot">·</span> github.com/MuhammadHamza2210/Synapse</div>
     </div>
 
     <div class="project">
       <div class="p-head">
-        <div class="p-title">Orion — Real-Time Stock Dashboard</div>
-        <div class="p-stack">React · FastAPI · WebSockets · AI</div>
+        <div class="p-title">CampusFind — Campus Marketplace &amp; Lost-and-Found</div>
+        <div class="p-stack">React · Node · MongoDB · Socket.io</div>
       </div>
       <div class="p-desc">
-        Streams live prices for 50 tickers over WebSockets with interactive charts, plus on-demand LLM
-        analysis that explains any stock’s recent movement in plain language.
+        A full-stack platform for university-verified students to post lost, found or for-sale items —
+        with automatic lost↔found matching, ownership-verified claims and real-time chat over WebSockets.
       </div>
-      <div class="p-links">orion-nine-wine.vercel.app <span class="dot">·</span> github.com/MuhammadHamza2210/Orion</div>
+      <div class="p-links">campus-find-mu.vercel.app <span class="dot">·</span> github.com/MuhammadHamza2210/CampusFind</div>
     </div>
 
     <div class="project">
@@ -202,8 +215,10 @@
     </div>
 
     <div class="more">
-      <b>Also built:</b> LootLo (full-stack e-commerce, Flask/SQLite) · WildMind AI (Gemini-powered
-      encyclopedia) · WeatherScope (Python data viz).
+      <b>Also built:</b> Orion (real-time stock dashboard, WebSockets + AI) · Fluxx (offline-first
+      finance dashboard, React/IndexedDB) · WildMind AI (Gemini-powered wildlife encyclopedia) · LootLo
+      (full-stack e-commerce with admin console, Flask/SQLite) · Hamza Restaurant (Node/Express ordering
+      system, JWT auth) · WeatherScope (Python data viz).
     </div>
   </section>
 
