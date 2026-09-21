@@ -153,7 +153,7 @@ export const projects: Project[] = [
     description:
       'An AI-powered wildlife encyclopedia. Ask about any animal and get rich, generated answers backed by an LLM — built with React and Vite.',
     tags: ['React', 'Vite', 'Gemini API'],
-    demo: 'https://muhammadhamza221003-wildmind-ai.hf.space',
+    demo: 'https://wild-mind-ai.vercel.app',
     github: 'https://github.com/MuhammadHamza2210/WildMind-AI',
     span: 'normal',
     accent: '#34d399',
