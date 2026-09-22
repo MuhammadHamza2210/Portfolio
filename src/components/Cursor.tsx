@@ -98,7 +98,7 @@ export default function Cursor() {
               animate={{ opacity: 1, scale: 1, x: '-50%', y: '-50%' }}
               exit={{ opacity: 0, scale: 0.5, x: '-50%', y: '-50%' }}
               transition={{ type: 'spring', stiffness: 480, damping: 30, mass: 0.6 }}
-              className="absolute left-0 top-0 flex items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-r from-accent to-accent-cyan px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-white shadow-[0_12px_44px_-8px_rgba(124,92,255,0.75)] ring-1 ring-white/25 backdrop-blur-sm"
+              className="absolute left-0 top-0 flex items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-r from-accent to-accent-cyan px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-white shadow-[0_12px_44px_-8px_rgba(59,130,246,0.75)] ring-1 ring-white/25 backdrop-blur-sm"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-white/90" />
               {label}

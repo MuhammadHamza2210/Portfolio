@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --bg: #05060a;
+  --bg: #060912;
   --fg: #e8eaf2;
   --muted: #9aa0b4;
   --glass: rgba(255, 255, 255, 0.04);
   --glass-border: rgba(255, 255, 255, 0.09);
-  --accent: #7c5cff;
-  --accent-glow: #a78bfa;
+  --accent: #3b82f6;
+  --accent-glow: #60a5fa;
   --accent-cyan: #22d3ee;
-  --accent-pink: #f472b6;
+  --accent-pink: #f5b942;
 }
 
 :root.light {
@@ -49,7 +49,7 @@ body {
 }
 
 ::selection {
-  background: rgba(124, 92, 255, 0.35);
+  background: rgba(59, 130, 246, 0.35);
   color: #fff;
 }
 
@@ -100,7 +100,7 @@ body {
   }
 
   .ring-accent {
-    box-shadow: 0 0 0 1px rgba(124, 92, 255, 0.4), 0 0 40px -8px rgba(124, 92, 255, 0.5);
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.4), 0 0 40px -8px rgba(59, 130, 246, 0.5);
   }
 }
 

@@ -11,7 +11,7 @@ type Props = {
  * Glass card with a 3D parallax tilt that follows the cursor, plus a
  * pointer-tracking light glow.
  */
-export default function TiltCard({ children, className = '', glow = '#7c5cff', intensity = 8 }: Props) {
+export default function TiltCard({ children, className = '', glow = '#3b82f6', intensity = 8 }: Props) {
   const ref = useRef<HTMLDivElement>(null)
 
   const handleMove = (e: MouseEvent) => {

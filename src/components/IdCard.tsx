@@ -56,7 +56,7 @@ export default function IdCard() {
         {/* animated gradient border */}
         <motion.div
           className="rounded-[30px] p-[1.5px]"
-          style={{ background: 'linear-gradient(135deg, #7c5cff, #22d3ee, #f472b6, #7c5cff)', backgroundSize: '300% 300%' }}
+          style={{ background: 'linear-gradient(135deg, #3b82f6, #22d3ee, #f5b942, #3b82f6)', backgroundSize: '300% 300%' }}
           animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
         >

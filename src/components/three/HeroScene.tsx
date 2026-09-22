@@ -29,8 +29,8 @@ function Crystal() {
       <mesh ref={ref} scale={1.6}>
         <icosahedronGeometry args={[1, 12]} />
         <MeshDistortMaterial
-          color="#7c5cff"
-          emissive="#3a1d8a"
+          color="#3b82f6"
+          emissive="#0b2a6b"
           emissiveIntensity={0.4}
           roughness={0.05}
           metalness={0.9}
@@ -69,10 +69,10 @@ function OrbitingShards() {
           <mesh position={s.pos} scale={s.scale}>
             <octahedronGeometry args={[1, 0]} />
             <meshStandardMaterial
-              color={i % 2 === 0 ? '#22d3ee' : '#f472b6'}
+              color={i % 2 === 0 ? '#22d3ee' : '#f5b942'}
               metalness={1}
               roughness={0.15}
-              emissive={i % 2 === 0 ? '#0e7490' : '#9d174d'}
+              emissive={i % 2 === 0 ? '#155e75' : '#78560a'}
               emissiveIntensity={0.5}
             />
           </mesh>
@@ -86,9 +86,9 @@ function Lights(props: ThreeElements['group']) {
   return (
     <group {...props}>
       <ambientLight intensity={0.4} />
-      <pointLight position={[5, 5, 5]} intensity={120} color="#7c5cff" />
+      <pointLight position={[5, 5, 5]} intensity={120} color="#3b82f6" />
       <pointLight position={[-5, -2, -4]} intensity={80} color="#22d3ee" />
-      <pointLight position={[0, -4, 4]} intensity={60} color="#f472b6" />
+      <pointLight position={[0, -4, 4]} intensity={60} color="#f5b942" />
     </group>
   )
 }
@@ -106,7 +106,7 @@ export default function HeroScene() {
           <Lights />
           <Crystal />
           <OrbitingShards />
-          <Sparkles count={120} scale={12} size={2.4} speed={0.3} color="#a78bfa" opacity={0.7} />
+          <Sparkles count={120} scale={12} size={2.4} speed={0.3} color="#60a5fa" opacity={0.7} />
           <Environment preset="city" />
         </Suspense>
       </PerformanceMonitor>

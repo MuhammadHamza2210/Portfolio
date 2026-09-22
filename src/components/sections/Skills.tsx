@@ -8,10 +8,10 @@ const categories = ['All', 'Frontend', 'AI', 'Backend', 'Tools'] as const
 
 // Per-category identity: an accent color + icon used across the cards.
 const catMeta: Record<Skill['category'], { color: string; icon: LucideIcon }> = {
-  Frontend: { color: '#7c5cff', icon: Layout },
+  Frontend: { color: '#3b82f6', icon: Layout },
   AI: { color: '#22d3ee', icon: Sparkles },
-  Backend: { color: '#f472b6', icon: Server },
-  Tools: { color: '#34d399', icon: Wrench },
+  Backend: { color: '#f5b942', icon: Server },
+  Tools: { color: '#38bdf8', icon: Wrench },
 }
 
 // How many dots light up per tier (out of 3).
@@ -21,7 +21,7 @@ const tierDots: Record<SkillLevel, number> = {
   Familiar: 1,
 }
 
-function LevelDots({ level, color = '#7c5cff' }: { level: SkillLevel; color?: string }) {
+function LevelDots({ level, color = '#3b82f6' }: { level: SkillLevel; color?: string }) {
   const filled = tierDots[level]
   return (
     <div className="flex items-center gap-1" aria-hidden>
@@ -120,7 +120,7 @@ export default function Skills() {
       <div className="mb-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-[var(--muted)]">
         {skillLevels.map((lvl) => (
           <span key={lvl} className="flex items-center gap-2">
-            <LevelDots level={lvl} color="#a78bfa" />
+            <LevelDots level={lvl} color="#3b82f6" />
             {lvl}
           </span>
         ))}

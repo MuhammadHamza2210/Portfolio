@@ -17,10 +17,10 @@ export default {
           700: '#141824',
         },
         accent: {
-          DEFAULT: '#7c5cff',
-          glow: '#a78bfa',
+          DEFAULT: '#3b82f6',
+          glow: '#60a5fa',
           cyan: '#22d3ee',
-          pink: '#f472b6',
+          pink: '#f5b942',
         },
       },
       backdropBlur: {

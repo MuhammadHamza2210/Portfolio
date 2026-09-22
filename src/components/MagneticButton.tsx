@@ -40,7 +40,7 @@ export default function MagneticButton({
     'relative inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-medium tracking-wide transition-colors duration-300 will-change-transform'
   const styles =
     variant === 'primary'
-      ? 'text-white ring-accent bg-gradient-to-r from-accent to-accent-cyan hover:shadow-[0_0_50px_-8px_rgba(124,92,255,0.7)]'
+      ? 'text-white ring-accent bg-gradient-to-r from-accent to-accent-cyan hover:shadow-[0_0_50px_-8px_rgba(59,130,246,0.7)]'
       : 'text-white/90 glass hover:bg-white/[0.08]'
 
   const inner = (

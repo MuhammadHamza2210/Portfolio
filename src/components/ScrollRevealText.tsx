@@ -31,7 +31,7 @@ function Word({
     progress,
     range,
     highlight
-      ? ['rgba(167,139,250,0.25)', '#a78bfa']
+      ? ['rgba(96,165,250,0.25)', '#60a5fa']
       : ['rgba(232,234,242,0.16)', 'rgba(232,234,242,0.96)'],
   )
   return (
