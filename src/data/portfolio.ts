@@ -205,8 +205,8 @@ export const projects: Project[] = [
   {
     title: 'Hamza Restaurant',
     description:
-      'A smart restaurant ordering system with a Node/Express backend, JWT auth and a SQLite database for menus and orders.',
-    tags: ['Node.js', 'Express', 'SQLite'],
+      'A smart restaurant ordering system with a Node/Express backend, JWT auth and a MongoDB Atlas database for menus and orders, deployed on Vercel.',
+    tags: ['Node.js', 'Express', 'MongoDB'],
     demo: 'https://hamza-restaurant.vercel.app',
     github: 'https://github.com/MuhammadHamza2210/Hamza-Restaurant',
     span: 'normal',
@@ -217,7 +217,7 @@ export const projects: Project[] = [
     problem:
       'Small restaurants need a simple digital ordering flow without the cost of heavy POS software.',
     solution:
-      'A restaurant ordering system with a Node/Express API, JWT-based auth for staff and customers, and a SQLite database driving menus and orders end to end.',
+      'A restaurant ordering system with a Node/Express API, JWT-based auth for staff and customers, and a MongoDB Atlas database driving menus and orders end to end — deployed serverless on Vercel.',
     highlights: ['JWT auth', 'Menu + order management', 'Node / Express API'],
   },
   {
