@@ -207,7 +207,7 @@ export const projects: Project[] = [
     description:
       'A smart restaurant ordering system with a Node/Express backend, JWT auth and a SQLite database for menus and orders.',
     tags: ['Node.js', 'Express', 'SQLite'],
-    demo: 'https://muhammadhamza221003-hamza-restaurant.hf.space',
+    demo: 'https://hamza-restaurant.vercel.app',
     github: 'https://github.com/MuhammadHamza2210/Hamza-Restaurant',
     span: 'normal',
     accent: '#f59e0b',
