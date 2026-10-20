@@ -5,7 +5,8 @@ import SectionHeading from '../SectionHeading'
 import Reveal, { StaggerGroup, StaggerItem } from '../Reveal'
 import { projects, type Project } from '../../data/portfolio'
 
-const featured = projects.filter((p) => p.featured)
+// LeadPilot leads; the other featured projects sit in a two-up row below it.
+const [lead, ...secondary] = projects.filter((p) => p.featured)
 const others = projects.filter((p) => !p.featured)
 
 function DemoLink({ project, className = '' }: { project: Project; className?: string }) {
@@ -40,50 +41,67 @@ function CodeLink({ project }: { project: Project }) {
   )
 }
 
-/** Large, image-led card for the top projects. Alternates image side on desktop. */
-function FeaturedProject({ project, flip, onOpen }: { project: Project; flip: boolean; onOpen: () => void }) {
+function CaseStudyButton({ onOpen }: { onOpen: () => void }) {
   return (
-    <article className="grid grid-cols-1 overflow-hidden rounded-3xl glass lg:grid-cols-[1.2fr_1fr]">
-      <button
-        onClick={onOpen}
-        data-cursor="hover"
-        data-cursor-label="Case study"
-        aria-label={`Open ${project.title} case study`}
-        className={`group relative block overflow-hidden bg-black/30 ${flip ? 'lg:order-2' : ''}`}
-      >
-        {project.image && (
-          <img
-            src={project.image}
-            alt={`${project.title} interface`}
-            loading="lazy"
-            className="aspect-[16/10] h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-          />
-        )}
-      </button>
+    <button
+      onClick={onOpen}
+      data-cursor="hover"
+      data-cursor-label="Case study"
+      className="rounded-full bg-accent px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
+    >
+      <span className="sm:hidden">Case study</span>
+      <span className="hidden sm:inline">Read case study</span>
+    </button>
+  )
+}
 
-      <div className="flex flex-col justify-center p-7 sm:p-10">
+/** Clickable screenshot that opens the case study. */
+function Screenshot({ project, onOpen, className = '' }: { project: Project; onOpen: () => void; className?: string }) {
+  return (
+    <button
+      onClick={onOpen}
+      data-cursor="hover"
+      data-cursor-label="Case study"
+      aria-label={`Open ${project.title} case study`}
+      className={`group relative block w-full overflow-hidden bg-black/30 ${className}`}
+    >
+      {project.image && (
+        <img
+          src={project.image}
+          alt={`${project.title} interface`}
+          loading="lazy"
+          className="aspect-video h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+        />
+      )}
+    </button>
+  )
+}
+
+function Highlights({ project, inline = false }: { project: Project; inline?: boolean }) {
+  return (
+    <ul className={inline ? 'mt-4 flex flex-wrap gap-x-4 gap-y-1.5 text-sm' : 'mt-5 space-y-2 text-sm'}>
+      {project.highlights.map((h) => (
+        <li key={h} className="flex items-center gap-2">
+          <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: project.accent }} />
+          {h}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+/** The one wide card at the top: screenshot beside the pitch. */
+function LeadProject({ project, onOpen }: { project: Project; onOpen: () => void }) {
+  return (
+    <article className="grid grid-cols-1 overflow-hidden rounded-3xl glass lg:grid-cols-[1.15fr_1fr]">
+      <Screenshot project={project} onOpen={onOpen} />
+      <div className="flex flex-col justify-center p-7 sm:p-9">
         <p className="font-mono text-xs text-[var(--muted)]">{project.tags.join(' · ')}</p>
         <h3 className="mt-3 font-display text-3xl font-semibold tracking-tight">{project.title}</h3>
         <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">{project.description}</p>
-
-        <ul className="mt-6 space-y-2 text-sm">
-          {project.highlights.map((h) => (
-            <li key={h} className="flex items-center gap-2.5">
-              <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: project.accent }} />
-              {h}
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-8 flex flex-wrap items-center gap-3">
-          <button
-            onClick={onOpen}
-            data-cursor="hover"
-            data-cursor-label="Case study"
-            className="rounded-full bg-accent px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
-          >
-            Read case study
-          </button>
+        <Highlights project={project} />
+        <div className="mt-7 flex flex-wrap items-center gap-3">
+          <CaseStudyButton onOpen={onOpen} />
           <DemoLink project={project} />
           <CodeLink project={project} />
         </div>
@@ -92,26 +110,34 @@ function FeaturedProject({ project, flip, onOpen }: { project: Project; flip: bo
   )
 }
 
-/** Compact card for the rest of the work. */
-function CompactProject({ project, onOpen }: { project: Project; onOpen: () => void }) {
+/** Screenshot-on-top card. `md` for the featured pair, `sm` for the rest. */
+function ProjectCard({ project, size, onOpen }: { project: Project; size: 'md' | 'sm'; onOpen: () => void }) {
+  const md = size === 'md'
   return (
-    <div className="flex h-full flex-col justify-between rounded-2xl glass p-6">
-      <button
-        onClick={onOpen}
-        data-cursor="hover"
-        data-cursor-label="Case study"
-        aria-label={`Open ${project.title} case study`}
-        className="text-left"
-      >
-        <h4 className="font-display text-lg font-semibold tracking-tight">{project.title}</h4>
-        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[var(--muted)]">{project.description}</p>
-        <p className="mt-3 font-mono text-xs text-[var(--muted)]/80">{project.tags.join(' · ')}</p>
-      </button>
-      <div className="mt-5 flex items-center gap-3">
-        <DemoLink project={project} className="px-3.5 py-1.5" />
-        <CodeLink project={project} />
+    <article className={`flex h-full flex-col overflow-hidden glass ${md ? 'rounded-3xl' : 'rounded-2xl'}`}>
+      <Screenshot project={project} onOpen={onOpen} />
+      <div className={`flex flex-1 flex-col ${md ? 'p-6 sm:p-7' : 'p-5'}`}>
+        {md && <p className="font-mono text-xs text-[var(--muted)]">{project.tags.join(' · ')}</p>}
+        {md ? (
+          <h3 className="mt-2.5 font-display text-2xl font-semibold tracking-tight">{project.title}</h3>
+        ) : (
+          <h4 className="font-display text-lg font-semibold tracking-tight">{project.title}</h4>
+        )}
+        <p className={`mt-2 text-sm leading-relaxed text-[var(--muted)] ${md ? '' : 'line-clamp-2'}`}>
+          {project.description}
+        </p>
+        {md ? (
+          <Highlights project={project} inline />
+        ) : (
+          <p className="mt-3 font-mono text-xs text-[var(--muted)]/80">{project.tags.join(' · ')}</p>
+        )}
+        <div className={`mt-auto flex flex-wrap items-center gap-2 sm:gap-3 ${md ? 'pt-6' : 'pt-5'}`}>
+          {md ? <CaseStudyButton onOpen={onOpen} /> : null}
+          <DemoLink project={project} className={md ? '' : 'px-3.5 py-1.5'} />
+          <CodeLink project={project} />
+        </div>
       </div>
-    </div>
+    </article>
   )
 }
 
@@ -274,19 +300,23 @@ export default function Projects() {
         subtitle="Three projects I'd walk you through first, then the rest of what I've shipped. Every one has a live demo."
       />
 
-      <div className="space-y-8">
-        {featured.map((project, i) => (
-          <Reveal key={project.title}>
-            <FeaturedProject project={project} flip={i % 2 === 1} onOpen={() => setActiveProject(project)} />
+      <Reveal>
+        <LeadProject project={lead} onOpen={() => setActiveProject(lead)} />
+      </Reveal>
+
+      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+        {secondary.map((project) => (
+          <Reveal key={project.title} className="h-full">
+            <ProjectCard project={project} size="md" onOpen={() => setActiveProject(project)} />
           </Reveal>
         ))}
       </div>
 
       <h3 className="mb-6 mt-20 font-display text-2xl font-semibold tracking-tight">More projects</h3>
-      <StaggerGroup className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <StaggerGroup className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
         {others.map((project) => (
-          <StaggerItem key={project.title}>
-            <CompactProject project={project} onOpen={() => setActiveProject(project)} />
+          <StaggerItem key={project.title} className="h-full">
+            <ProjectCard project={project} size="sm" onOpen={() => setActiveProject(project)} />
           </StaggerItem>
         ))}
       </StaggerGroup>

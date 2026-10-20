@@ -130,6 +130,24 @@ export const projects: Project[] = [
     highlights: ['100% offline & private', 'Live charts + health score', 'CSV / JSON backup'],
   },
   {
+    title: 'CampusFind',
+    description:
+      'A campus marketplace and lost-and-found for verified university students — post lost, found or for-sale items, get automatic lost↔found matches, and chat in real time.',
+    tags: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Socket.io'],
+    demo: 'https://campus-find-mu.vercel.app',
+    github: 'https://github.com/MuhammadHamza2210/CampusFind',
+    accent: '#6366f1',
+    image: '/projects/campusfind.jpg',
+    year: '2026',
+    role: 'Solo — full-stack',
+    problem:
+      'Lost items on campus get posted in scattered WhatsApp groups and are rarely returned, and students selling used books or gadgets have no trusted place to do it.',
+    solution:
+      'Built one platform for both, open only to students who verify a university email with a one-time code. New posts are automatically scored against complementary listings (category, location and keywords) so a lost item surfaces its likely found match, with a live alert to the other person. Finders can set a verification question that a claimant must answer to prove ownership, then a private real-time chat (Socket.io) opens to arrange the handoff. Includes live notifications, search and filters, a personal dashboard, admin moderation and Cloudinary image hosting.',
+    highlights: ['Lost ↔ found auto-matching', 'Ownership-verified claims', 'Real-time chat (Socket.io)'],
+    note: 'The free-tier API sleeps when idle, so listings can take a few seconds to appear on first load.',
+  },
+  {
     title: 'Synapse',
     description:
       'An AI "Study OS" that turns your notes into an interactive 3D Mind Palace. Uses retrieval-augmented generation (RAG) to answer questions from your own documents.',

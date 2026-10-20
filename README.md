@@ -43,6 +43,7 @@ file; no component changes needed. Update SEO tags in `index.html`.
 - **LeadPilot** — multi-tenant B2B AI sales agent (crawl → RAG → lead scoring)
 - **Synapse** — AI Study OS with a 3D Mind Palace (RAG)
 - **Orion** — real-time stock dashboard with AI analysis
+- **CampusFind** — campus lost-and-found + marketplace with real-time chat
 - **WildMind AI** — AI wildlife encyclopedia
 - **CodeScan AI** — code plagiarism detector (ML)
 - **LootLo** — full-stack e-commerce app
