@@ -21,9 +21,9 @@ I love working at the intersection of AI and web development — building things
 }
 
 export const stats = [
-  { label: 'Projects Built', value: 9, suffix: '+' },
+  { label: 'Projects Built', value: 10, suffix: '+' },
   { label: 'Technologies', value: 14, suffix: '+' },
-  { label: 'AI Projects', value: 3, suffix: '' },
+  { label: 'AI Projects', value: 4, suffix: '' },
   { label: 'Languages', value: 5, suffix: '+' },
 ]
 
@@ -63,8 +63,8 @@ export type Project = {
   description: string
   tags: string[]
   demo: string
-  github: string
-  span: 'wide' | 'tall' | 'normal' | 'big'
+  github?: string // omit for private repos
+  featured?: boolean // shown large at the top of the Projects section
   accent: string
   // --- case study fields (shown in the detail modal) ---
   year: string
@@ -73,9 +73,28 @@ export type Project = {
   solution: string
   highlights: string[] // short metric / impact badges
   image?: string // optional screenshot in /public (e.g. '/projects/synapse.png')
+  note?: string // practical tip shown next to the demo link (cold starts, demo login)
 }
 
 export const projects: Project[] = [
+  {
+    title: 'LeadPilot — AI Sales Agent',
+    description:
+      'A multi-tenant B2B AI sales agent. Give it a business website and it crawls the site, builds a RAG knowledge base, and runs an embeddable chat widget that answers visitors, qualifies them and scores leads.',
+    tags: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Gemini'],
+    demo: 'https://leadpilot-web-ashy.vercel.app',
+    featured: true,
+    accent: '#f5a524',
+    image: '/projects/leadpilot.jpg',
+    year: '2026',
+    role: 'Solo — full-stack & AI',
+    problem:
+      'Small businesses lose visitors who show up with a question when nobody is around to answer. Generic chatbots either know nothing about the business or confidently make things up.',
+    solution:
+      'Point LeadPilot at a website and it crawls it (robots-aware and SSRF-safe), chunks and embeds the content into MongoDB vector search, and extracts structured business info. Visitors chat with an agent grounded only in that knowledge — it detects buying intent, qualifies them in natural conversation and produces an explainable 0–100 lead score. Owners get a dashboard with conversations, a leads CRM and analytics, plus a one-line embeddable widget isolated in an iframe. Multi-tenant from day one, with strict per-business data isolation and prompt-injection defences on scraped content.',
+    highlights: ['Website → RAG agent automatically', 'Explainable lead scoring', 'Multi-tenant + embeddable widget'],
+    note: 'Demo login: demo@leadpilot.ai / demodemo123. The free-tier API sleeps, so the first request can take ~50s.',
+  },
   {
     title: 'Folio — PDF Toolkit',
     description:
@@ -83,7 +102,6 @@ export const projects: Project[] = [
     tags: ['React', 'TypeScript', 'Node.js', 'Express'],
     demo: 'https://muhammadhamza221003-folio.hf.space',
     github: 'https://github.com/MuhammadHamza2210/Folio',
-    span: 'normal',
     accent: '#ef4444',
     image: '/projects/folio.png',
     year: '2026',
@@ -101,7 +119,6 @@ export const projects: Project[] = [
     tags: ['React', 'TypeScript', 'IndexedDB', 'Recharts'],
     demo: 'https://fluxx-nu.vercel.app/',
     github: 'https://github.com/MuhammadHamza2210/Fluxx',
-    span: 'normal',
     accent: '#60a5fa',
     image: '/projects/fluxx.jpg',
     year: '2026',
@@ -119,7 +136,7 @@ export const projects: Project[] = [
     tags: ['React', 'FastAPI', 'RAG', 'Three.js'],
     demo: 'https://synapse-eight-ruby.vercel.app/',
     github: 'https://github.com/MuhammadHamza2210/Synapse',
-    span: 'normal',
+    featured: true,
     accent: '#3b82f6',
     image: '/projects/synapse.jpg',
     year: '2026',
@@ -137,7 +154,7 @@ export const projects: Project[] = [
     tags: ['React', 'FastAPI', 'WebSockets', 'AI'],
     demo: 'https://orion-nine-wine.vercel.app/',
     github: 'https://github.com/MuhammadHamza2210/Orion',
-    span: 'normal',
+    featured: true,
     accent: '#22d3ee',
     image: '/projects/orion.jpg',
     year: '2026',
@@ -155,7 +172,6 @@ export const projects: Project[] = [
     tags: ['React', 'Vite', 'Gemini API'],
     demo: 'https://wild-mind-ai.vercel.app',
     github: 'https://github.com/MuhammadHamza2210/WildMind-AI',
-    span: 'normal',
     accent: '#34d399',
     image: '/projects/wildmind.jpg',
     year: '2026',
@@ -173,7 +189,6 @@ export const projects: Project[] = [
     tags: ['Python', 'Streamlit', 'ML'],
     demo: 'https://codescan-ai-lkuctppx3i2c4izvjpekkc.streamlit.app/',
     github: 'https://github.com/MuhammadHamza2210/CodeScan-AI',
-    span: 'normal',
     accent: '#f5b942',
     image: '/projects/codescan.jpg',
     year: '2026',
@@ -191,7 +206,6 @@ export const projects: Project[] = [
     tags: ['Flask', 'SQLite', 'REST API'],
     demo: 'https://muhammadhamza221003-lootlo.hf.space',
     github: 'https://github.com/MuhammadHamza2210/Lootlo',
-    span: 'normal',
     accent: '#f472b6',
     image: '/projects/lootlo.jpg',
     year: '2026',
@@ -209,7 +223,6 @@ export const projects: Project[] = [
     tags: ['Node.js', 'Express', 'MongoDB'],
     demo: 'https://hamza-restaurant.vercel.app',
     github: 'https://github.com/MuhammadHamza2210/Hamza-Restaurant',
-    span: 'normal',
     accent: '#f59e0b',
     image: '/projects/restaurant.jpg',
     year: '2026',
@@ -227,7 +240,6 @@ export const projects: Project[] = [
     tags: ['Python', 'Streamlit', 'API'],
     demo: 'https://weatherscope-stlgpbewcgqufpmrbossmt.streamlit.app/',
     github: 'https://github.com/MuhammadHamza2210/WeatherScope',
-    span: 'normal',
     accent: '#38bdf8',
     image: '/projects/weatherscope.jpg',
     year: '2026',

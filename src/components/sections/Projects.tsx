@@ -1,89 +1,117 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowUpRight, Github, X, Calendar, User } from 'lucide-react'
+import { ArrowUpRight, Github, X, Calendar, User, Info } from 'lucide-react'
 import SectionHeading from '../SectionHeading'
-import TiltCard from '../TiltCard'
-import { StaggerGroup, StaggerItem } from '../Reveal'
+import Reveal, { StaggerGroup, StaggerItem } from '../Reveal'
 import { projects, type Project } from '../../data/portfolio'
 
-const spanClass: Record<Project['span'], string> = {
-  big: 'md:col-span-2 md:row-span-2',
-  wide: 'md:col-span-2',
-  tall: 'md:row-span-2',
-  normal: '',
+const featured = projects.filter((p) => p.featured)
+const others = projects.filter((p) => !p.featured)
+
+function DemoLink({ project, className = '' }: { project: Project; className?: string }) {
+  return (
+    <a
+      href={project.demo}
+      target="_blank"
+      rel="noreferrer"
+      data-cursor="hover"
+      data-cursor-label="Live ↗"
+      className={`inline-flex items-center gap-1.5 rounded-full bg-white/[0.06] px-4 py-2 text-sm transition-colors hover:bg-white/[0.12] ${className}`}
+    >
+      Live demo <ArrowUpRight size={15} />
+    </a>
+  )
 }
 
-function ProjectCard({ project, onOpen }: { project: Project; onOpen: () => void }) {
+function CodeLink({ project }: { project: Project }) {
+  if (!project.github) return null
   return (
-    <TiltCard className="relative flex h-full min-h-[220px] flex-col justify-between p-7" glow={project.accent} intensity={6}>
-      {/* decorative gradient blob */}
-      <div
-        className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full opacity-30 blur-3xl"
-        style={{ background: project.accent }}
-      />
+    <a
+      href={project.github}
+      target="_blank"
+      rel="noreferrer"
+      data-cursor="hover"
+      data-cursor-label="Code"
+      aria-label={`${project.title} source code on GitHub`}
+      className="grid h-9 w-9 place-items-center rounded-full glass transition-colors hover:bg-white/[0.12]"
+    >
+      <Github size={16} />
+    </a>
+  )
+}
 
-      {/* clicking the card body opens the case study */}
+/** Large, image-led card for the top projects. Alternates image side on desktop. */
+function FeaturedProject({ project, flip, onOpen }: { project: Project; flip: boolean; onOpen: () => void }) {
+  return (
+    <article className="grid grid-cols-1 overflow-hidden rounded-3xl glass lg:grid-cols-[1.2fr_1fr]">
       <button
         onClick={onOpen}
         data-cursor="hover"
         data-cursor-label="Case study"
         aria-label={`Open ${project.title} case study`}
-        className="relative flex flex-col text-left"
+        className={`group relative block overflow-hidden bg-black/30 ${flip ? 'lg:order-2' : ''}`}
       >
         {project.image && (
-          <div className="mb-5 h-40 w-full overflow-hidden rounded-xl ring-1 ring-white/10">
-            <img
-              src={project.image}
-              alt={`${project.title} screenshot`}
-              loading="lazy"
-              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
-            />
-          </div>
+          <img
+            src={project.image}
+            alt={`${project.title} interface`}
+            loading="lazy"
+            className="aspect-[16/10] h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+          />
         )}
-        <div className="mb-4 flex flex-wrap items-center gap-2">
-          {project.tags.map((t) => (
-            <span key={t} className="rounded-full glass px-3 py-1 text-xs text-[var(--muted)]">
-              {t}
-            </span>
-          ))}
-        </div>
-        <h3 className="font-display text-2xl font-semibold tracking-tight">{project.title}</h3>
-        <p className="mt-2 max-w-md text-sm leading-relaxed text-[var(--muted)]">{project.description}</p>
       </button>
 
-      <div className="relative mt-6 flex items-center gap-3">
-        <button
-          onClick={onOpen}
-          data-cursor="hover"
-          data-cursor-label="Case study"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--fg)] transition-opacity hover:opacity-70"
-        >
-          Case study →
-        </button>
-        <span className="text-[var(--muted)]">·</span>
-        <a
-          href={project.demo}
-          target="_blank"
-          rel="noreferrer"
-          data-cursor="hover"
-          data-cursor-label="Live ↗"
-          className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.06] px-4 py-2 text-sm transition-colors hover:bg-white/[0.12]"
-        >
-          Live Demo <ArrowUpRight size={15} />
-        </a>
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noreferrer"
-          data-cursor="hover"
-          data-cursor-label="Code"
-          aria-label="GitHub repository"
-          className="grid h-9 w-9 place-items-center rounded-full glass transition-colors hover:bg-white/[0.12]"
-        >
-          <Github size={16} />
-        </a>
+      <div className="flex flex-col justify-center p-7 sm:p-10">
+        <p className="font-mono text-xs text-[var(--muted)]">{project.tags.join(' · ')}</p>
+        <h3 className="mt-3 font-display text-3xl font-semibold tracking-tight">{project.title}</h3>
+        <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">{project.description}</p>
+
+        <ul className="mt-6 space-y-2 text-sm">
+          {project.highlights.map((h) => (
+            <li key={h} className="flex items-center gap-2.5">
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: project.accent }} />
+              {h}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+          <button
+            onClick={onOpen}
+            data-cursor="hover"
+            data-cursor-label="Case study"
+            className="rounded-full bg-accent px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
+          >
+            Read case study
+          </button>
+          <DemoLink project={project} />
+          <CodeLink project={project} />
+        </div>
       </div>
-    </TiltCard>
+    </article>
+  )
+}
+
+/** Compact card for the rest of the work. */
+function CompactProject({ project, onOpen }: { project: Project; onOpen: () => void }) {
+  return (
+    <div className="flex h-full flex-col justify-between rounded-2xl glass p-6">
+      <button
+        onClick={onOpen}
+        data-cursor="hover"
+        data-cursor-label="Case study"
+        aria-label={`Open ${project.title} case study`}
+        className="text-left"
+      >
+        <h4 className="font-display text-lg font-semibold tracking-tight">{project.title}</h4>
+        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[var(--muted)]">{project.description}</p>
+        <p className="mt-3 font-mono text-xs text-[var(--muted)]/80">{project.tags.join(' · ')}</p>
+      </button>
+      <div className="mt-5 flex items-center gap-3">
+        <DemoLink project={project} className="px-3.5 py-1.5" />
+        <CodeLink project={project} />
+      </div>
+    </div>
   )
 }
 
@@ -145,7 +173,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           <img
             src={project.image}
             alt={`${project.title} screenshot`}
-            className="mb-6 aspect-video w-full rounded-2xl object-cover ring-1 ring-white/10"
+            className="mb-6 aspect-video w-full rounded-2xl object-cover object-top ring-1 ring-white/10"
             loading="lazy"
           />
         )}
@@ -198,6 +226,13 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             </div>
           </div>
 
+          {project.note && (
+            <p className="mt-6 flex gap-2.5 rounded-2xl bg-white/[0.04] p-4 text-sm leading-relaxed text-[var(--muted)]">
+              <Info size={16} className="mt-0.5 shrink-0" />
+              {project.note}
+            </p>
+          )}
+
           <div className="mt-8 flex items-center gap-3">
             <a
               href={project.demo}
@@ -209,16 +244,18 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             >
               Live Demo <ArrowUpRight size={15} />
             </a>
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noreferrer"
-              data-cursor="hover"
-              data-cursor-label="Code"
-              className="inline-flex items-center gap-2 rounded-full glass px-5 py-2.5 text-sm transition-colors hover:bg-white/[0.12]"
-            >
-              <Github size={16} /> Source
-            </a>
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="hover"
+                data-cursor-label="Code"
+                className="inline-flex items-center gap-2 rounded-full glass px-5 py-2.5 text-sm transition-colors hover:bg-white/[0.12]"
+              >
+                <Github size={16} /> Source
+              </a>
+            )}
           </div>
         </div>
       </motion.div>
@@ -234,13 +271,22 @@ export default function Projects() {
       <SectionHeading
         eyebrow="Projects"
         title="Selected work"
-        subtitle="A curated set of experiments and products I've shipped — click any card for the full case study."
+        subtitle="Three projects I'd walk you through first, then the rest of what I've shipped. Every one has a live demo."
       />
 
-      <StaggerGroup className="grid auto-rows-[minmax(220px,auto)] grid-cols-1 gap-5 md:grid-cols-3">
-        {projects.map((project) => (
-          <StaggerItem key={project.title} className={spanClass[project.span]}>
-            <ProjectCard project={project} onOpen={() => setActiveProject(project)} />
+      <div className="space-y-8">
+        {featured.map((project, i) => (
+          <Reveal key={project.title}>
+            <FeaturedProject project={project} flip={i % 2 === 1} onOpen={() => setActiveProject(project)} />
+          </Reveal>
+        ))}
+      </div>
+
+      <h3 className="mb-6 mt-20 font-display text-2xl font-semibold tracking-tight">More projects</h3>
+      <StaggerGroup className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {others.map((project) => (
+          <StaggerItem key={project.title}>
+            <CompactProject project={project} onOpen={() => setActiveProject(project)} />
           </StaggerItem>
         ))}
       </StaggerGroup>

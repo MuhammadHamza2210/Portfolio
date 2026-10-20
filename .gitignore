@@ -7,3 +7,6 @@ dist-ssr
 .DS_Store
 *.log
 *.tsbuildinfo
+
+# secrets (.env.local is already covered by *.local)
+.env

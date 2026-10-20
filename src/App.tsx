@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
-import { AnimatePresence } from 'framer-motion'
 import { useTheme } from './hooks/useTheme'
 
 import Cursor from './components/Cursor'
-import Loader from './components/Loader'
 import Navbar from './components/Navbar'
 import CommandPalette from './components/CommandPalette'
+import AskHamza from './components/AskHamza'
 import Footer from './components/Footer'
 
 import Hero from './components/sections/Hero'
@@ -19,14 +18,8 @@ import Contact from './components/sections/Contact'
 
 export default function App() {
   const { theme, toggle } = useTheme()
-  const [loading, setLoading] = useState(true)
   const [paletteOpen, setPaletteOpen] = useState(false)
-
-  // initial loading screen
-  useEffect(() => {
-    const t = setTimeout(() => setLoading(false), 1800)
-    return () => clearTimeout(t)
-  }, [])
+  const [askOpen, setAskOpen] = useState(false)
 
   // ⌘K / Ctrl+K to open the command palette
   useEffect(() => {
@@ -48,11 +41,11 @@ export default function App() {
 
       <Cursor />
 
-      <AnimatePresence>{loading && <Loader />}</AnimatePresence>
-
       <Navbar theme={theme} onToggleTheme={toggle} onOpenPalette={() => setPaletteOpen(true)} />
 
-      <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} onToggleTheme={toggle} theme={theme} />
+      <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} onToggleTheme={toggle} theme={theme} onOpenAsk={() => setAskOpen(true)} />
+
+      <AskHamza open={askOpen} onOpenChange={setAskOpen} />
 
       <main>
         <Hero />

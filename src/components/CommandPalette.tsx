@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Search, User, Code2, FolderGit2, Briefcase, Mail, Github, Linkedin,
-  Sun, Moon, type LucideIcon,
+  Sun, Moon, Sparkles, type LucideIcon,
 } from 'lucide-react'
 import { profile } from '../data/portfolio'
 
@@ -18,9 +18,10 @@ type Props = {
   onClose: () => void
   onToggleTheme: () => void
   theme: 'dark' | 'light'
+  onOpenAsk: () => void
 }
 
-export default function CommandPalette({ open, onClose, onToggleTheme, theme }: Props) {
+export default function CommandPalette({ open, onClose, onToggleTheme, theme, onOpenAsk }: Props) {
   const [query, setQuery] = useState('')
   const [cursor, setCursor] = useState(0)
 
@@ -35,6 +36,7 @@ export default function CommandPalette({ open, onClose, onToggleTheme, theme }: 
 
   const actions: Action[] = useMemo(
     () => [
+      { label: 'Ask AI about Hamza', icon: Sparkles, hint: 'AI', run: () => { onClose(); onOpenAsk() } },
       { label: 'Go to About', icon: User, hint: 'Section', run: go('#about') },
       { label: 'Go to Skills', icon: Code2, hint: 'Section', run: go('#skills') },
       { label: 'Go to Projects', icon: FolderGit2, hint: 'Section', run: go('#projects') },
